@@ -104,9 +104,7 @@ def main(page: ft.Page):
     def aktualisiere_buttons():
         groesse_button.text = f"Größe/Name: {standard_text("Groesse")}"
         maschenanschlag_button.text = f"Maschenanschlag: {standard_text('Maschenanschlag')}"
-        offengestricktereihen_button.text = (f"Offen geschrickte Reihen: {standard_text(
-            'offen gestrickte Reihen ab Anschlag'
-        )}")
+        offengestricktereihen_button.text = f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
         geschlossenerunden_button.text = f"Geschlossene Runden: {standard_text('geschlossene Runden')}"
 
         groesse_textfeld.label = f"Groesse/Name: {standard_text("Groesse")}"
