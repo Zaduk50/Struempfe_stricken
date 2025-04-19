@@ -109,9 +109,7 @@ def main(page: ft.Page):
 
         groesse_textfeld.label = f"Groesse/Name: {standard_text("Groesse")}"
         maschenanschlag_textfeld.label = f"Maschenanschlag: {standard_text('Maschenanschlag')}"
-        offengestricktereihen_textfeld.label = f"Offen geschrickte Reihen: {standard_text(
-            'offen gestrickte Reihen ab Anschlag'
-        )}"
+        offengestricktereihen_textfeld.label = f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
         geschlossenerunden_textfeld.label = f"Geschlossene Runden: {standard_text('geschlossene Runden')}"
         page.update()
 
