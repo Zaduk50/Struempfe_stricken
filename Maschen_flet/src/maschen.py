@@ -204,7 +204,6 @@ def main(page: ft.Page):
 
 
     dropdown = ft.Dropdown(
-            color="black",
             label="Name auswählen",
             hint_text=".....",
             fill_color=pink,
