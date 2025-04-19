@@ -82,7 +82,7 @@ def main(page: ft.Page):
         else:
             return ausgewahlter_eintrag.get(key, "keine Wert")
 
-    groesse_button = AnzeigeButton(text=f"Größe/Name: {standard_text("Groesse")}")
+    groesse_button = AnzeigeButton(text=f"Größe/Name: {standard_text('Groesse')}")
     maschenanschlag_button = AnzeigeButton(text=f"Maschenanschlag: {standard_text('Maschenanschlag')}")
     offengestricktereihen_button = AnzeigeButton(
         text=f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
