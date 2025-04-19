@@ -383,8 +383,7 @@ def main(page: ft.Page):
         #height=600,
     )
 
-    page.add(
-        ft.SafeArea(
+    safe_area = ft.SafeArea(
             expand=True,
             top=True,
             bottom=False,
@@ -395,7 +394,7 @@ def main(page: ft.Page):
                 content=ft.Column(
                     scroll=ScrollMode.ALWAYS,
                     #width=800,
-                    controls=[headText, select_row, auswahl_anzeigen, auswahl_ändern, bearbeiten_row,tabelle_anzeigen , scrollbare_tabelle],
+                    controls=[headText, select_row, auswahl_anzeigen, auswahl_ändern, bearbeiten_row,tabelle_anzeigen, scrollbare_tabelle],
                     expand=True,
                     alignment=ft.MainAxisAlignment.START,
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
@@ -403,11 +402,18 @@ def main(page: ft.Page):
 
 
                 )
-            ),
+            )
 
+    viewer = ft.InteractiveViewer(
+        min_scale=0.5,  # Mindestmaßstab (hier 50% der Originalgröße)
+        max_scale=3.0,  # Maximalmaßstab (300% der Originalgröße)
+        scale_enabled=True,  # Aktiviert das Zoomen per Fingerbewegung
+        pan_enabled=True,  # Aktiviert das Verschieben (Panning)
+        content=safe_area,
+    )
 
-        )
+    page.add(viewer)
 
 
 #ft.app(target=main)
-ft.app(target=main, view=ft.WEB_BROWSER)
+ft.app(target=main, view=ft.WEB_BROWSER, host="0.0.0.0", port=8550 )
