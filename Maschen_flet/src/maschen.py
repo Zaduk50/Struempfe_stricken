@@ -33,6 +33,7 @@ def main(page: ft.Page):
     page.bgcolor=light_pink
     page.scroll = ft.ScrollMode.ALWAYS
     page.window_full_screen = True
+    page.adaptive = True
 
     """def schrift_anpassen(e):
         schriftgröße = 14 if page.width < 500 else 22
@@ -205,13 +206,15 @@ def main(page: ft.Page):
 
     dropdown = ft.Dropdown(
             label="Name auswählen",
+            label_style=ft.TextStyle(color="black"),
             hint_text=".....",
             fill_color=pink,
             options=[ft.dropdown.Option(person) for person in personen],
             on_change=lambda e: dropdown_geaendert()
         )
 
-    eingabe_textfeld = ft.TextField(label="Größe 27 - 49...", color="black" ,bgcolor=pink, on_submit=lambda e: textfeld_geaendert())
+    eingabe_textfeld = ft.TextField(label="Größe 27 - 49...",color="black" ,bgcolor=pink,
+                                    label_style=ft.TextStyle(color="black"), on_submit=lambda e: textfeld_geaendert())
     eingabe_button = ft.FilledButton(text="Auswählen", icon="favorite", color="black",
                                      bgcolor=not_pink, icon_color="red", on_click=lambda e: textfeld_geaendert())
 
