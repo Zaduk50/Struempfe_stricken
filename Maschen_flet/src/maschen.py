@@ -90,7 +90,7 @@ def main(page: ft.Page):
     geschlossenerunden_button = AnzeigeButton(text=f"Geschlossene Runden: {standard_text('geschlossene Runden')}")
 
     groesse_textfeld = ft.TextField(
-        label=f"Größe/Name: {standard_text("Groesse")}", bgcolor=not_pink, border_radius=15)
+        label=f"Größe/Name: {standard_text('Groesse')}", bgcolor=not_pink, border_radius=15)
     maschenanschlag_textfeld = ft.TextField(label=f"Maschenanschlag: {standard_text('Maschenanschlag')}",
                                             bgcolor=not_pink, border_radius=15)
     offengestricktereihen_textfeld = ft.TextField(
@@ -102,12 +102,12 @@ def main(page: ft.Page):
         label=f"Geschlossene Runden: {standard_text('geschlossene Runden')}")
 
     def aktualisiere_buttons():
-        groesse_button.text = f"Größe/Name: {standard_text("Groesse")}"
+        groesse_button.text = f"Größe/Name: {standard_text('Groesse')}"
         maschenanschlag_button.text = f"Maschenanschlag: {standard_text('Maschenanschlag')}"
         offengestricktereihen_button.text = f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
         geschlossenerunden_button.text = f"Geschlossene Runden: {standard_text('geschlossene Runden')}"
 
-        groesse_textfeld.label = f"Groesse/Name: {standard_text("Groesse")}"
+        groesse_textfeld.label = f"Groesse/Name: {standard_text('Groesse')}"
         maschenanschlag_textfeld.label = f"Maschenanschlag: {standard_text('Maschenanschlag')}"
         offengestricktereihen_textfeld.label = f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
         geschlossenerunden_textfeld.label = f"Geschlossene Runden: {standard_text('geschlossene Runden')}"
