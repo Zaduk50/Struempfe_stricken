@@ -14,19 +14,20 @@ basis_ordner = os.path.dirname(__file__)
 datei = os.path.join(basis_ordner, "Maschen.csv")
 
 
-class AnzeigeButton(ft.TextButton):
-    def __init__(self, text, on_click=None):
+class AnzeigeButton(ft.TextField):
+    def __init__(self, text,):
         super().__init__(
-            text = text,
-            on_click = on_click,
+            value= text,
             expand=False,
-            style = ft.ButtonStyle(
-                bgcolor = not_pink,
-                color   = grey,
-                padding = 5,
-                shape   = ft.RoundedRectangleBorder(radius=10),
-                text_style=ft.TextStyle(size=18)
-            ))
+            border_width=0,
+            bgcolor=not_pink,
+            color=grey,
+            border_radius=20,
+            adaptive=True,
+            multiline=True,
+            read_only=True,
+            text_size=16
+            )
 
 def main(page: ft.Page):
     page.title="Maschenanschläge fürs Hausschuhe stricken"
@@ -35,9 +36,9 @@ def main(page: ft.Page):
     page.window_full_screen = True
     page.adaptive = True
 
-    """def schrift_anpassen(e):
-        schriftgröße = 14 if page.width < 500 else 22
-        überschriftgröße = 16 if page.width < 500 else 28
+    def schrift_anpassen(e):
+        schriftgröße = 8 if page.window.width < 500 else 16
+        überschriftgröße = 10 if page.window.width < 500 else 20
 
         for btn in [
             groesse_button,
@@ -52,7 +53,7 @@ def main(page: ft.Page):
         headText.size = überschriftgröße
         page.update()
 
-    page.on_resize=schrift_anpassen"""
+    page.on_resize=schrift_anpassen
 
     def laden():
         global daten
@@ -83,30 +84,32 @@ def main(page: ft.Page):
         else:
             return ausgewahlter_eintrag.get(key, "keine Wert")
 
-    groesse_button = AnzeigeButton(text=f"Größe/Name: {standard_text('Groesse')}")
-    maschenanschlag_button = AnzeigeButton(text=f"Maschenanschlag: {standard_text('Maschenanschlag')}")
+    groesse_button = AnzeigeButton(text=f"Größe/Name:\n{standard_text('Groesse')}")
+    maschenanschlag_button = AnzeigeButton(text=f"Maschenanschlag:\n{standard_text('Maschenanschlag')}")
     offengestricktereihen_button = AnzeigeButton(
-        text=f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
+        text=f"Offen geschrickte Reihen:\n{standard_text('offen gestrickte Reihen ab Anschlag')}"
     )
-    geschlossenerunden_button = AnzeigeButton(text=f"Geschlossene Runden: {standard_text('geschlossene Runden')}")
+    geschlossenerunden_button = AnzeigeButton(text=f"Geschlossene Runden:\n{standard_text('geschlossene Runden')}")
 
     groesse_textfeld = ft.TextField(
-        label=f"Größe/Name: {standard_text('Groesse')}", bgcolor=not_pink, border_radius=15)
+        label=f"Größe/Name:\ {standard_text('Groesse')}", bgcolor=not_pink, border_radius=20,
+        adaptive=True, border_width=0, label_style=ft.TextStyle(color=grey))
     maschenanschlag_textfeld = ft.TextField(label=f"Maschenanschlag: {standard_text('Maschenanschlag')}",
-                                            bgcolor=not_pink, border_radius=15)
+                                            bgcolor=not_pink, border_radius=20, adaptive=True, border_width=0,
+                                            label_style=ft.TextStyle(color=grey))
     offengestricktereihen_textfeld = ft.TextField(
-        bgcolor=not_pink, border_radius=15,
+        bgcolor=not_pink, border_radius=20, adaptive=True, border_width=0, label_style=ft.TextStyle(color=grey),
         label=f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
     )
     geschlossenerunden_textfeld = ft.TextField(
-        bgcolor=not_pink, border_radius=15,
+        bgcolor=not_pink, border_radius=20, adaptive=True, border_width=0, label_style=ft.TextStyle(color=grey),
         label=f"Geschlossene Runden: {standard_text('geschlossene Runden')}")
 
     def aktualisiere_buttons():
-        groesse_button.text = f"Größe/Name: {standard_text('Groesse')}"
-        maschenanschlag_button.text = f"Maschenanschlag: {standard_text('Maschenanschlag')}"
-        offengestricktereihen_button.text = f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
-        geschlossenerunden_button.text = f"Geschlossene Runden: {standard_text('geschlossene Runden')}"
+        groesse_button.value = f"Größe/Name: {standard_text('Groesse')}"
+        maschenanschlag_button.value = f"Maschenanschlag: {standard_text('Maschenanschlag')}"
+        offengestricktereihen_button.value = f"Offen geschrickte Reihen: {standard_text('offen gestrickte Reihen ab Anschlag')}"
+        geschlossenerunden_button.value = f"Geschlossene Runden: {standard_text('geschlossene Runden')}"
 
         groesse_textfeld.label = f"Groesse/Name: {standard_text('Groesse')}"
         maschenanschlag_textfeld.label = f"Maschenanschlag: {standard_text('Maschenanschlag')}"
@@ -419,4 +422,5 @@ def main(page: ft.Page):
 
 
 #ft.app(target=main)
-ft.app(target=main, view=ft.WEB_BROWSER, host="0.0.0.0", port=8550 )
+#ft.app(target=main, view=ft.WEB_BROWSER, host="0.0.0.0", port=8550)
+ft.app(target=main, view=ft.WEB_BROWSER)
