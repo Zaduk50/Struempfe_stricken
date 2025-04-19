@@ -218,7 +218,7 @@ def main(page: ft.Page):
 
     eingabe_textfeld = ft.TextField(label="Größe 27 - 49...",color="black" ,bgcolor=pink,
                                     label_style=ft.TextStyle(color="black"), on_submit=lambda e: textfeld_geaendert())
-    eingabe_button = ft.FilledButton(text="Auswählen", icon="favorite", color="black",
+    eingabe_button = ft.ElevatedButton(text="Auswählen", icon="favorite", color="black",
                                      bgcolor=not_pink, icon_color="red", on_click=lambda e: textfeld_geaendert())
 
     def dropdown_geaendert():
@@ -263,7 +263,8 @@ def main(page: ft.Page):
         controls=[
             ft.Container(
                 alignment=ft.alignment.center,
-            content=ft.Column(controls=[dropdown, ft.Container(height=33, opacity=0, expand=True)]),),
+            content=ft.Column(controls=[dropdown, ft.FilledButton(text="Platzhalter", color=light_pink,
+                                                                  bgcolor=light_pink, disabled=True)]),),
             ft.Container(schuhgroesse_eingabe),],
         alignment=ft.MainAxisAlignment.CENTER
     ),margin=ft.margin.only(top=20),alignment=ft.alignment.center)
