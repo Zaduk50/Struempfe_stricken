@@ -208,6 +208,7 @@ def main(page: ft.Page):
 
 
     dropdown = ft.Dropdown(
+            color="black",
             label="Name auswählen",
             hint_text=".....",
             fill_color=pink,
@@ -215,7 +216,7 @@ def main(page: ft.Page):
             on_change=lambda e: dropdown_geaendert()
         )
 
-    eingabe_textfeld = ft.TextField(label="Größe 27 - 49...", bgcolor=pink, on_submit=lambda e: textfeld_geaendert())
+    eingabe_textfeld = ft.TextField(label="Größe 27 - 49...", color="black" ,bgcolor=pink, on_submit=lambda e: textfeld_geaendert())
     eingabe_button = ft.FilledButton(text="Auswählen", icon="favorite", color="black",
                                      bgcolor=not_pink, icon_color="red", on_click=lambda e: textfeld_geaendert())
 
