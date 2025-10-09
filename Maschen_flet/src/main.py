@@ -35,10 +35,11 @@ def main(page: ft.Page):
     page.scroll = ft.ScrollMode.ALWAYS
     page.window_full_screen = True
     page.adaptive = True
+    personen = []
 
     def schrift_anpassen(e):
-        schriftgröße = 8 if page.window.width < 500 else 16
-        überschriftgröße = 10 if page.window.width < 500 else 20
+        schriftgroesse = 8 if page.window.width < 500 else 16
+        überschriftgroesse = 10 if page.window.width < 500 else 20
 
         for btn in [
             groesse_button,
@@ -47,10 +48,10 @@ def main(page: ft.Page):
             geschlossenerunden_button
         ]:
             btn.style = ft.ButtonStyle(
-                text_style=ft.TextStyle(size=schriftgröße)
+                text_style=ft.TextStyle(size=schriftgroesse)
             )
 
-        headText.size = überschriftgröße
+        headText.size = überschriftgroesse
         page.update()
 
     page.on_resize=schrift_anpassen
@@ -63,14 +64,12 @@ def main(page: ft.Page):
         page.update()
 
     def personen_bestimmen():
-        global personen
+        nonlocal personen
         personen = [eintrag['Groesse'] for eintrag in daten[23:]]
 
     laden()
     personen_bestimmen()
-
-    global ausgewahlter_eintrag
-    ausgewahlter_eintrag= None
+    ausgewahlter_eintrag= {}
 
     def finde_eintrag(eingabe):
         for eintrag in daten:
@@ -79,6 +78,7 @@ def main(page: ft.Page):
         return None
 
     def standard_text(key):
+        nonlocal ausgewahlter_eintrag
         if not ausgewahlter_eintrag:
             return "bitte Auswahl treffen"
         else:
@@ -92,7 +92,7 @@ def main(page: ft.Page):
     geschlossenerunden_button = AnzeigeButton(text=f"Geschlossene Runden:\n{standard_text('geschlossene Runden')}")
 
     groesse_textfeld = ft.TextField(
-        label=f"Größe/Name:\ {standard_text('Groesse')}", bgcolor=not_pink, border_radius=20,
+        label=f"Größe/Name:\n {standard_text('Groesse')}", bgcolor=not_pink, border_radius=20,
         adaptive=True, border_width=0, label_style=ft.TextStyle(color=grey))
     maschenanschlag_textfeld = ft.TextField(label=f"Maschenanschlag: {standard_text('Maschenanschlag')}",
                                             bgcolor=not_pink, border_radius=20, adaptive=True, border_width=0,
@@ -218,7 +218,7 @@ def main(page: ft.Page):
 
     eingabe_textfeld = ft.TextField(label="Größe 27 - 49...",color="black" ,bgcolor=pink,
                                     label_style=ft.TextStyle(color="black"), on_submit=lambda e: textfeld_geaendert())
-    eingabe_button = ft.ElevatedButton(text="Auswählen", icon="favorite", color="black",
+    eingabe_button =ft.ElevatedButton(text="Auswählen", icon="favorite", color="black",
                                      bgcolor=not_pink, icon_color="red", on_click=lambda e: textfeld_geaendert())
 
     def dropdown_geaendert():
@@ -425,3 +425,4 @@ def main(page: ft.Page):
 #ft.app(target=main)
 #ft.app(target=main, view=ft.WEB_BROWSER, host="0.0.0.0", port=8550)
 ft.app(target=main, view=ft.WEB_BROWSER)
+#ft.app(target=main, view=ft.AppView.FLET_APP)

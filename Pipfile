@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flet = "==0.26.0"
+flet-cli = "==0.26.0"
+flet-desktop = "==0.26.0"
+flet-web = "==0.26.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"
