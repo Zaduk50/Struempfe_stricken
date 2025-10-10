@@ -232,7 +232,7 @@ def main(page: ft.Page):
         page.update()
 
     def verarbeite_auswahl():
-        global ausgewahlter_eintrag
+        nonlocal ausgewahlter_eintrag
         eingabe = dropdown.value or eingabe_textfeld.value
         eintrag = finde_eintrag(eingabe)
         if eintrag:
